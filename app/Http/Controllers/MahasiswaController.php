@@ -35,7 +35,7 @@ class MahasiswaController extends Controller
             'nim' => 'required|digits:10|unique:mahasiswas',
             'nama' => 'required',
             'email' => 'required|unique:mahasiswas',
-            'nohp' => 'required|digits:12|unique:mahasiswas',
+            'nohp' => 'required|digits_between:11,12|unique:mahasiswas',
             'jurusan' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
