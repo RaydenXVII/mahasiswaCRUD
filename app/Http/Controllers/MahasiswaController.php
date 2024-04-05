@@ -16,7 +16,8 @@ class MahasiswaController extends Controller
     }
 
     //menampilkan detail dari mahasiswa yang di pilih
-    public function show($id){
+    public function show($id)
+    {
         $mahasiswa = Mahasiswa::find($id);
         return view('mahasiswa.detail', [
             'mahasiswa' => $mahasiswa
@@ -24,7 +25,8 @@ class MahasiswaController extends Controller
     }
 
     //menampilkan form tambah mahasiswa
-    public function create(){
+    public function create()
+    {
         return view('mahasiswa.create');
     }
 
@@ -46,52 +48,72 @@ class MahasiswaController extends Controller
             $name_file = $randomString . "_" . $file->getClientOriginalName();
             $file->storeAs('public/image/', $name_file);
             $validatedData['foto'] = $name_file;
-        };
+        }
+        ;
 
         Mahasiswa::create($validatedData);
         return redirect('/mahasiswa');
     }
 
     //menampilkan form edit mahasiswa yang dipilih
-    public function edit($id){
+    public function edit($id)
+    {
         $mahasiswa = Mahasiswa::find($id);
 
         // dd($mahasiswa);
 
         return view('mahasiswa.edit', [
-           'mahasiswa' => $mahasiswa
+            'mahasiswa' => $mahasiswa
         ]);
     }
 
-    public function update(Request $request,$id){
-        // dd($request->all());
+    public function update(Request $request, $id)
+    {
         $validatedData = $request->validate([
-            'nim' =>'nullable|digits:10|unique:mahasiswas',
+            'nim' => 'nullable|digits:10|',
             'nama' => 'nullable',
-            'email' => 'nullable|unique:mahasiswas',
-            'nohp' => 'nullable|unique:mahasiswas|digits:12',
+            'email' => 'nullable|',
+            'nohp' => 'nullable|digits:12',
             'jurusan' => 'nullable',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        $mahasiswa = Mahasiswa::find($id);
+
+        // Mengecek Apakah Terdapat File img yang baru
         if ($request->hasFile('foto')) {
+            // Menghapus foto lama apbila ada
+            if ($mahasiswa->foto) {
+                Storage::delete('public/image/' . $mahasiswa->foto);
+            }
+
+            // Menyimpan foto yang baru
             $file = $request->file('foto');
             $randomString = Str::random(5);
             $name_file = $randomString . "_" . $file->getClientOriginalName();
             $file->storeAs('public/image/', $name_file);
             $validatedData['foto'] = $name_file;
-        };
+        }
 
-        Mahasiswa::where('id', $id)->update($validatedData);
+        $mahasiswa->update($validatedData);
         return redirect('/mahasiswa');
     }
+
 
     //menghapus data Mahasiswa
     public function destroy($id)
-    {
-        $image = Mahasiswa::find($id);
-        Storage::delete('public/image/' . $image->img);
-        $image->delete();
-        return redirect('/mahasiswa');
+{
+    $mahasiswa = Mahasiswa::find($id);
+
+    // Memeriksa apakah gambar itu ada sebelum mencoba menghapusnya
+    if ($mahasiswa->foto) {
+        // Menghapus gambar
+        Storage::delete('public/image/' . $mahasiswa->foto);
     }
+
+    // Menghapus Record mahasiswa
+    $mahasiswa->delete();
+
+    return redirect('/mahasiswa');
+}
 }
