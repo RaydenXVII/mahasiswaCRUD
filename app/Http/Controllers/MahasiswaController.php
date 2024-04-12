@@ -67,13 +67,14 @@ class MahasiswaController extends Controller
         ]);
     }
 
+    //mengupdate data mahasiswa yang dipilih
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nim' => 'nullable|digits:10|',
+            'nim' => 'required|digits:10|unique:mahasiswas',
             'nama' => 'nullable',
-            'email' => 'nullable|',
-            'nohp' => 'nullable|digits:12',
+            'email' => 'nullable|unique:mahasiswas',
+            'nohp' => 'nullable|digits_between:11,12|unique:mahasiswas',
             'jurusan' => 'nullable',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
@@ -98,7 +99,6 @@ class MahasiswaController extends Controller
         $mahasiswa->update($validatedData);
         return redirect('/mahasiswa');
     }
-
 
     //menghapus data Mahasiswa
     public function destroy($id)
