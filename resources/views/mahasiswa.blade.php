@@ -10,7 +10,7 @@
                     <th scope="col">No</th>
                     <th scope="col">Nim</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Jurusan</th>
+                    <th scope="col">Program Studi</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -20,7 +20,7 @@
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $mahasiswa->nim }}</td>
                         <td>{{ $mahasiswa->nama }}</td>
-                        <td>{{ $mahasiswa->jurusan }}</td>
+                        <td>{{ $mahasiswa->prodi }}</td>
                         <td>
                             <a href="/mahasiswa/{{ $mahasiswa->id }}" class="btn btn-primary">Detail</a>
                             <a href="/mahasiswa/{{ $mahasiswa->id }}/edit" class="btn btn-warning">Edit</a>

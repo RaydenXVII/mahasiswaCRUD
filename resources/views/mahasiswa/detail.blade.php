@@ -13,7 +13,7 @@
                 <h5 class="card-title, text-center">{{ $mahasiswa->nama }}</h5>
                 <p class="card-text">Email : {{ $mahasiswa->email }}</p>
                 <p class="card-text">No HP : {{ $mahasiswa->nohp }}</p>
-                <p class="card-text">Prodi : {{ $mahasiswa->jurusan }}</p>
+                <p class="card-text">Program Studi : {{ $mahasiswa->prodi }}</p>
                 <a href="/mahasiswa" class="btn btn-primary">Back</a>
             </div>
             </div>

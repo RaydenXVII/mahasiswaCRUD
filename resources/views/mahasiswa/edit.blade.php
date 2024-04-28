@@ -49,56 +49,56 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-label">Jurusan</label>
-                <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example"
-                    name="jurusan" value="{{ old('jurusan') }}">
-                    <option selected disabled>Pilih jurusan</option>
-                    <option name="jurusan" value="Rekayasa Perangkat Lunak {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Rekayasa Perangkat Lunak' ? 'selected' : '' }}>
+                <label class="form-label">Program Studi</label>
+                <select class="form-select @error('prodi') is-invalid @enderror" aria-label="Default select example"
+                    name="prodi" value="{{ old('prodi') }}">
+                    <option selected disabled>Pilih prodi</option>
+                    <option name="prodi" value="Rekayasa Perangkat Lunak {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Rekayasa Perangkat Lunak' ? 'selected' : '' }}>
                         Rekayasa Perangkat Lunak
                     </option>
-                    <option name="jurusan" value="Informatika {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Informatika' ? 'selected' : '' }}>
+                    <option name="prodi" value="Informatika {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Informatika' ? 'selected' : '' }}>
                         Informatika
                     </option>
-                    <option name="jurusan" value="Sains Data {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Sains Data' ? 'selected' : '' }}>
+                    <option name="prodi" value="Sains Data {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Sains Data' ? 'selected' : '' }}>
                         Sains Data
                     </option>
-                    <option name="jurusan" value="Teknologi Informasi {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Teknologi Informasi' ? 'selected' : '' }}>
+                    <option name="prodi" value="Teknologi Informasi {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Teknologi Informasi' ? 'selected' : '' }}>
                         Teknologi Informasi
                     </option>
-                    <option name="jurusan" value="Sistem Informasi {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Sistem Informasi' ? 'selected' : '' }}>
+                    <option name="prodi" value="Sistem Informasi {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Sistem Informasi' ? 'selected' : '' }}>
                         Sistem Informasi
                     </option>
-                    <option name="jurusan" value="Teknik Telekomunikasi {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Teknik Telekomunikasi' ? 'selected' : '' }}>
+                    <option name="prodi" value="Teknik Telekomunikasi {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Teknik Telekomunikasi' ? 'selected' : '' }}>
                         Teknik Telekomunikasi
                     </option>
-                    <option name="jurusan" value="Teknik Logistik {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Teknik Logistik' ? 'selected' : '' }}>
+                    <option name="prodi" value="Teknik Logistik {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Teknik Logistik' ? 'selected' : '' }}>
                         Teknik Logistik
                     </option>
-                    <option name="jurusan" value="Teknik Industri {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Teknik Industri' ? 'selected' : '' }}>
+                    <option name="prodi" value="Teknik Industri {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Teknik Industri' ? 'selected' : '' }}>
                         Teknik Industri
                     </option>
-                    <option name="jurusan" value="Teknik Elektro {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Teknik Elektro' ? 'selected' : '' }}>
+                    <option name="prodi" value="Teknik Elektro {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Teknik Elektro' ? 'selected' : '' }}>
                         Teknik Elektro
                     </option>
-                    <option name="jurusan" value="Teknik Komputer {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Teknik Komputer' ? 'selected' : '' }}>
+                    <option name="prodi" value="Teknik Komputer {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Teknik Komputer' ? 'selected' : '' }}>
                         Teknik Komputer
                     </option>
-                    <option name="jurusan" value="Bisnis Digital {{ old('jurusan') }}"
-                        {{ $mahasiswa->jurusan == 'Bisnis Digital' ? 'selected' : '' }}>
+                    <option name="prodi" value="Bisnis Digital {{ old('prodi') }}"
+                        {{ $mahasiswa->prodi == 'Bisnis Digital' ? 'selected' : '' }}>
                         Bisnis Digital
                     </option>
                 </select>
-                @error('jurusan')
+                @error('prodi')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>

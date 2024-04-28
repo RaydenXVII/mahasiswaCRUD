@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama', 200);
             $table->string('email')->unique();
             $table->string('nohp', 12);
-            $table->string('jurusan');
+            $table->string('prodi');
             $table->string('foto');
             $table->timestamps();
         });

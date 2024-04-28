@@ -47,24 +47,23 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-label">Jurusan</label>
-                <select class="form-select @error('jurusan') is-invalid @enderror" aria-label="Default select example"
-                    name="jurusan">
-                    <option selected disabled>Pilih jurusan</option>
-                    <option name="jurusan" value="Rekayasa Perangkat Lunak {{ old('jurusan') }}">Rekayasa Perangkat Lunak
-                    </option>
-                    <option name="jurusan" value="Informatika {{ old('jurusan') }}">Informatika</option>
-                    <option name="jurusan" value="Sains Data {{ old('jurusan') }}">Sains Data</option>
-                    <option name="jurusan" value="Teknologi Informasi {{ old('jurusan') }}">Teknologi Informasi</option>
-                    <option name="jurusan" value="Sistem Informasi {{ old('jurusan') }}">Sistem Informasi</option>
-                    <option name="jurusan" value="Teknik Telekomunikasi {{ old('jurusan') }}">Teknik Telekomunikasi</option>
-                    <option name="jurusan" value="Teknik Logistik {{ old('jurusan') }}">Teknik Logistik</option>
-                    <option name="jurusan" value="Teknik Industri {{ old('jurusan') }}">Teknik Industri</option>
-                    <option name="jurusan" value="Teknik Elektro {{ old('jurusan') }}">Teknik Elektro</option>
-                    <option name="jurusan" value="Teknik Komputer {{ old('jurusan') }}">Teknik Komputer</option>
-                    <option name="jurusan" value="Bisnis Digital {{ old('jurusan') }}">Bisnis Digital</option>
+                <label class="form-label">Program Studi</label>
+                <select class="form-select @error('prodi') is-invalid @enderror" aria-label="Default select example"
+                    name="prodi" value=>
+                    <option selected disabled>Pilih prodi</option>
+                    <option name="prodi" value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+                    <option name="prodi" value="Informatika">Informatika</option>
+                    <option name="prodi" value="Sains Data">Sains Data</option>
+                    <option name="prodi" value="Teknologi Informasi">Teknologi Informasi</option>
+                    <option name="prodi" value="Sistem Informasi">Sistem Informasi</option>
+                    <option name="prodi" value="Teknik Telekomunikasi">Teknik Telekomunikasi</option>
+                    <option name="prodi" value="Teknik Logistik">Teknik Logistik</option>
+                    <option name="prodi" value="Teknik Industri">Teknik Industri</option>
+                    <option name="prodi" value="Teknik Elektro">Teknik Elektro</option>
+                    <option name="prodi" value="Teknik Komputer">Teknik Komputer</option>
+                    <option name="prodi" value="Bisnis Digital">Bisnis Digital</option>
                 </select>
-                @error('jurusan')
+                @error('prodi')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>

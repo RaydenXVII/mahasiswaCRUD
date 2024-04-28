@@ -38,13 +38,13 @@ class MahasiswaController extends Controller
             'nama' => 'required',
             'email' => 'required|unique:mahasiswas',
             'nohp' => 'required|digits_between:11,12|unique:mahasiswas',
-            'jurusan' => 'required',
+            'prodi' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $randomString = Str::random(5);
+            $randomString = Str::random(10);
             $name_file = $randomString . "_" . $file->getClientOriginalName();
             $file->storeAs('public/image/', $name_file);
             $validatedData['foto'] = $name_file;
@@ -75,7 +75,7 @@ class MahasiswaController extends Controller
             'nama' => 'nullable',
             'email' => 'nullable|unique:mahasiswas',
             'nohp' => 'nullable|digits_between:11,12|unique:mahasiswas',
-            'jurusan' => 'nullable',
+            'prodi' => 'nullable',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -90,7 +90,7 @@ class MahasiswaController extends Controller
 
             // Menyimpan foto yang baru
             $file = $request->file('foto');
-            $randomString = Str::random(5);
+            $randomString = Str::random(10);
             $name_file = $randomString . "_" . $file->getClientOriginalName();
             $file->storeAs('public/image/', $name_file);
             $validatedData['foto'] = $name_file;
