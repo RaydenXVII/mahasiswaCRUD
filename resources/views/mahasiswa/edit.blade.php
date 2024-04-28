@@ -11,7 +11,8 @@
             <div class="mb-3">
                 <label for="nim" class="form-label">Nim</label>
                 <input type="number" class="form-control @error('nim') is-invalid @enderror" name="nim"
-                    value="{{ $mahasiswa->nim }}" id="nim" placeholder="1201220000 (Max 10)">
+                    value="{{ $mahasiswa->nim }}" id="nim" placeholder="1201220000 (Max 10)"
+                    oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10);">
                 @error('nim')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -41,7 +42,8 @@
             <div class="mb-3">
                 <label for="email" class="form-label">No HP</label>
                 <input type="number" class="form-control @error('nohp') is-invalid @enderror" name="nohp"
-                    value="{{ $mahasiswa->nohp }}" id="email" placeholder="088123456789 (Max 12)">
+                    value="{{ $mahasiswa->nohp }}" id="email" placeholder="088123456789 (Max 12)"
+                    oninput="if(this.value.length > 12) this.value = this.value.slice(0, 12);">
                 @error('nohp')
                     <div class="invalid-feedback">
                         {{ $message }}
