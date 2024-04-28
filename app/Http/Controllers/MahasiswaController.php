@@ -71,10 +71,10 @@ class MahasiswaController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nim' => 'required|digits:10|unique:mahasiswas',
+            'nim' => 'required|digits:10',
             'nama' => 'nullable',
-            'email' => 'nullable|unique:mahasiswas',
-            'nohp' => 'nullable|digits_between:11,12|unique:mahasiswas',
+            'email' => 'nullable',
+            'nohp' => 'nullable|digits_between:11,12',
             'prodi' => 'nullable',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
