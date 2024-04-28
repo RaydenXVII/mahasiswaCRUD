@@ -60,30 +60,28 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::find($id);
 
-        // dd($mahasiswa);
-
         return view('mahasiswa.edit', [
             'mahasiswa' => $mahasiswa
         ]);
     }
 
     //mengupdate data mahasiswa yang dipilih
-    public function update(Request $request, $id)
+    public function update(Request $request, Mahasiswa $mahasiswa)
     {
         $validatedData = $request->validate([
-            'nim' => 'required|digits:10',
-            'nama' => 'nullable',
-            'email' => 'nullable',
-            'nohp' => 'nullable|digits_between:11,12',
-            'prodi' => 'nullable',
+            'nim' => 'required|digits:10|unique:mahasiswas,nim,' . $mahasiswa->id,
+            'nama' => 'required',
+            'email' => 'required|email|unique:mahasiswas,email,' . $mahasiswa->id,
+            'nohp' => 'required|digits_between:11,12|unique:mahasiswas,nohp,' . $mahasiswa->id,
+            'prodi' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $mahasiswa = Mahasiswa::find($id);
+        $mahasiswa = Mahasiswa::find($mahasiswa->id);
 
-        // Mengecek Apakah Terdapat File img yang baru
+        // Mengecek Apakah Terdapat File foto yang baru
         if ($request->hasFile('foto')) {
-            // Menghapus foto lama apbila ada
+            // Menghapus foto lama apabila terdapat foto yang baru
             if ($mahasiswa->foto) {
                 Storage::delete('public/image/' . $mahasiswa->foto);
             }
@@ -102,18 +100,18 @@ class MahasiswaController extends Controller
 
     //menghapus data Mahasiswa
     public function destroy($id)
-{
-    $mahasiswa = Mahasiswa::find($id);
+    {
+        $mahasiswa = Mahasiswa::find($id);
 
-    // Memeriksa apakah gambar itu ada sebelum mencoba menghapusnya
-    if ($mahasiswa->foto) {
-        // Menghapus gambar
-        Storage::delete('public/image/' . $mahasiswa->foto);
+        // Memeriksa apakah gambar itu ada sebelum mencoba menghapusnya
+        if ($mahasiswa->foto) {
+            // Menghapus gambar
+            Storage::delete('public/image/' . $mahasiswa->foto);
+        }
+
+        // Menghapus Record mahasiswa
+        $mahasiswa->delete();
+
+        return redirect('/mahasiswa');
     }
-
-    // Menghapus Record mahasiswa
-    $mahasiswa->delete();
-
-    return redirect('/mahasiswa');
-}
 }

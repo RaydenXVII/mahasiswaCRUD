@@ -2,14 +2,15 @@
 @section('title', 'Tambah Mahasiswa')
 
 @section('content')
-<h1 class="mb-3, text-center">Tambah Mahasiswa</h1>
+    <h1 class="mb-3, text-center">Tambah Mahasiswa</h1>
     <div class="container py-5">
         <form action="/mahasiswa" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="nim" class="form-label">Nim</label>
                 <input type="number" class="form-control @error('nim') is-invalid @enderror" name="nim"
-                    value="{{ old('nim') }}" id="nim" placeholder="1201220000 (Max 10)">
+                    value="{{ old('nim') }}" id="nim" placeholder="1201220000 (Max 10)"
+                    oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10);">
                 @error('nim')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -39,7 +40,8 @@
             <div class="mb-3">
                 <label for="email" class="form-label">No HP</label>
                 <input type="number" class="form-control @error('nohp') is-invalid @enderror" name="nohp"
-                    value="{{ old('nohp') }}" id="email" placeholder="088123456789 (Max 12)">
+                    value="{{ old('nohp') }}" id="email" placeholder="088123456789 (Max 12)"
+                    oninput="if(this.value.length > 12) this.value = this.value.slice(0, 12);">
                 @error('nohp')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -49,7 +51,7 @@
             <div class="mb-3">
                 <label class="form-label">Program Studi</label>
                 <select class="form-select @error('prodi') is-invalid @enderror" aria-label="Default select example"
-                    name="prodi" value=>
+                    name="prodi">
                     <option selected disabled>Pilih prodi</option>
                     <option name="prodi" value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
                     <option name="prodi" value="Informatika">Informatika</option>
