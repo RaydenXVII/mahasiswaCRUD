@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
-            $table->string('nim', 10)->unique();
+            $table->Integer('nim')->unsigned();
             $table->string('nama', 200);
             $table->string('email')->unique();
             $table->string('nohp', 12);
